@@ -1,0 +1,67 @@
+﻿<#@ template debug="false" hostspecific="false" language="C#" #>
+<#@ output extension=".cs" #>
+<#@ assembly name="System.Core.dll" #>
+<#@ assembly name="System.Data.dll" #>
+<#@ assembly name="System.Data.DataSetExtensions.dll" #>
+<#@ assembly name="System.Xml.dll" #>
+<#@ import namespace="System" #>
+<#@ import namespace="System.Xml" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Data" #>
+<#@ import namespace="System.Data.SqlClient" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ import namespace="System.IO" #>
+<#@ include file="$(ProjectDir)DbHelper.ttinclude"  #>
+//------------------------------------------------------------------------------
+// Joooooooooooker
+//     此代码由T4模板自动生成
+//	   生成时间 <#=DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")#> by joker
+//     对此文件的更改可能会导致不正确的行为，并且如果重新生成代码，这些更改将会丢失。
+// Joooooooooooker
+//------------------------------------------------------------------------------
+<#
+	var module = config.Module;
+	var tableName=config.TableName.Replace("C_","")+"Repository";
+	var entity=config.TableName.Replace("C_","")+"Entity";
+ #>
+using Joker.Data;
+using Joker.Domain.Entity.<#=module#>;
+using Joker.Domain.IRepository.<#=module#>;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Joker.Repository.<#=module#>
+{
+	/// <summary>
+	/// <#=tableName#>
+	/// </summary>	
+	public class <#=tableName#>:RepositoryBase<<#=entity#>>,I<#=tableName#>
+	{
+		public void DeleteForm(string keyValue)
+		{
+			using (var db = new RepositoryBase().BeginTrans())
+			{
+				db.Delete<<#=entity#>>(t => t.F_Id == keyValue);
+				db.Commit();
+			}
+		}
+		public void SubmitForm(<#=entity#> entity, string keyValue)
+		{
+			using (var db = new RepositoryBase().BeginTrans())
+			{
+				if (!string.IsNullOrEmpty(keyValue))
+				{
+					db.Update(entity);
+				}
+				else
+				{
+					db.Insert(entity);
+				}
+				db.Commit();
+			}
+		}
+    }
+}
