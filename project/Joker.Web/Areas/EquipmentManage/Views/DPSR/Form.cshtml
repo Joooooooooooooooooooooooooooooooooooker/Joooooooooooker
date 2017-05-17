@@ -40,6 +40,12 @@
             }
         })
     }
+
+    $(document).ready(function () {
+        $("#F_Data1").select2();
+        $("#F_Data2").select2();
+    });
+
 </script>
 
 <form id="form1">
@@ -54,14 +60,16 @@
                 <tr>
                     <th class="formTitle">装置</th>
                     <td class="formValue">
-                        <select id="F_Data1" name="F_Data1" class="form-control required">
-                            @*<option value="0">装置</option>*@
+                        <select id="F_Data1" name="F_Data1" class="form-control required" multiple="multiple">
+                            @*<option value=" 0">
+                            装置</option>*@
                         </select>
                     </td>
                     <th class="formTitle">参数</th>
                     <td class="formValue">
-                        <select id="F_Data2" name="F_Data2" class="form-control required">
-                            @*<option value="0">参数</option>*@
+                        <select id="F_Data2" name="F_Data2" class="form-control required" multiple="multiple">
+                            @*<option value=" 0">
+                            参数</option>*@
                         </select>
                     </td>
                 </tr>

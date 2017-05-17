@@ -10,7 +10,7 @@
     {
         var newDiv = document.getElementById('main');
         newDiv.innerHTML = '';
-        newDiv.innerHTML = '<div id="content"></div><div id="topoDiv"><canvas width="1200" height="500" id="canvas" style=" background-color:#EEEEEE;"></canvas></div>';
+        newDiv.innerHTML = '<div id="content"></div><div id="topoDiv"><canvas width="1200" height="550" id="canvas" style=" background-color:#EEEEEE;"></canvas></div>';
     }
 
     function loadTopology() {
@@ -45,6 +45,7 @@
         };
 
         var stage = new JTopo.Stage(canvas);
+        stage.eagleEye.visible = true
         showJTopoToobar(stage);
         var scene = new JTopo.Scene(stage);
         scene.alpha = 1;
@@ -57,7 +58,7 @@
             //rootNode.alarmColor = '0,238,118';
             //rootNode.alarmAlpha = 0;
             subProcess(rootNode, '0', topoJsonData, detailJsonData);
-            scene.doLayout(JTopo.layout.TreeLayout('down', 90, 90));
+            scene.doLayout(JTopo.layout.TreeLayout('down', 100, 113));
         }
 
         function getDeviceToPoInfo() {
@@ -115,6 +116,7 @@
                     node.setImage('/Content/img/warn.png', true)
                 }
             }
+
             //node.setLocation(x, y);
             //node.textPosition = "Middle_Center";
             node.fontColor = '0,0,0'
@@ -272,7 +274,7 @@
         }
 
         function addLink(nodeA, nodeZ) {
-            var link = new JTopo.Link(nodeA, nodeZ);
+            var link = new JTopo.FlexionalLink(nodeA, nodeZ);
             link.strokeColor = '204,204,204';
             link.lineWidth = 1;
             scene.add(link);
