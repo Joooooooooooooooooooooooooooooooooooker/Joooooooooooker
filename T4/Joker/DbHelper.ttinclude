@@ -343,7 +343,8 @@
 	public class config
 	{
 		//数据库连接字符串
-        public static readonly string ConnectionString = "Data Source=60.29.3.61;Initial Catalog=HMEMS;User ID=HMEMS;Password=Hmems-123;";
+        public static readonly string ConnectionString = "Data Source=211.159.157.37;Initial Catalog=HMEMS;User ID=HMEMS;Password=Hmems-123;";
+		//public static readonly string ConnectionString = "Data Source=60.29.3.61;Initial Catalog=HMEMS;User ID=HMEMS;Password=Hmems-123;";
 		//public static readonly string ConnectionString = "Data Source=orcl;Persist Security Info=True;User ID=orcl;Password=orcl;Unicode=True";
 		
 		//模块名称

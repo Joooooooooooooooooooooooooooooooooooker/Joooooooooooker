@@ -10,7 +10,7 @@
     {
         var newDiv = document.getElementById('main');
         newDiv.innerHTML = '';
-        newDiv.innerHTML = '<div id="content"></div><div id="topoDiv"><canvas width="1200" height="700" id="canvas" style=" background-color:#EEEEEE;"></canvas></div>';
+        newDiv.innerHTML = '<div id="content"></div><div id="topoDiv"><canvas width="1200" height="550" id="canvas" style=" background-color:#EEEEEE;"></canvas></div>';
     }
 
     function loadTopology() {
@@ -57,8 +57,8 @@
             //rootNode.alarm = '默认根节点';
             //rootNode.alarmColor = '0,238,118';
             //rootNode.alarmAlpha = 0;
-            subProcess(rootNode, '0', topoJsonData, detailJsonData);
-            scene.doLayout(JTopo.layout.TreeLayout('down', 100, 138));
+            subProcess(rootNode, '0', topoJsonData, detailJsonData);         
+            scene.doLayout(JTopo.layout.TreeLayout('down', 100, 113));
         }
 
         function getDeviceToPoInfo() {
